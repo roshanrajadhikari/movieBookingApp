@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-moviebookingapp-dev-231154-authRole",
+      "UnauthRoleArn": "arn:aws:iam::609332332664:role/amplify-moviebookingapp-dev-231154-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::609332332664:role/amplify-moviebookingapp-dev-231154-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-moviebookingapp-dev-231154-deployment",
+      "UnauthRoleName": "amplify-moviebookingapp-dev-231154-unauthRole",
+      "StackName": "amplify-moviebookingapp-dev-231154",
+      "StackId": "arn:aws:cloudformation:us-east-1:609332332664:stack/amplify-moviebookingapp-dev-231154/90f073f0-f09a-11ec-b0e8-0a0d5c2710bf",
+      "AmplifyAppId": "d2avmrukkjpap8"
+    }
+  }
+}
