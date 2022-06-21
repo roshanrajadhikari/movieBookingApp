@@ -1,0 +1,14 @@
+{
+  "resourceName": "moviesdb",
+  "tableName": "moviesdb",
+  "partitionKey": {
+    "fieldName": "movieId",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "movieName",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

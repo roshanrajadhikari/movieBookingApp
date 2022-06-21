@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import BookingList from '../../components/BookingList';
-import { Auth, Hub } from 'aws-amplify';
+import { Auth, Hub, API } from 'aws-amplify';
 
 function BookingListScreen(navigation){
 
   const [user, setUser] = useState(undefined);
+  const [bookingList, setBookingLists] = useState(undefined);
 
   const checkUser = async () => {
     try {
@@ -19,10 +20,25 @@ function BookingListScreen(navigation){
       return false;
     }
   };
+  
+  useEffect(() => {
+
+    try {
+      API.get('movieapi','/bookings/bookingId')
+      .then(res => 
+        console.log(res)
+        //setBookingLists(res)
+        );
+    } catch (error) {
+      console.log(error)
+    }
+
+  }, []);
 
   useEffect(() => {
     checkUser();
   }, []);
+
 
   useEffect(() => {
     const listener = data => {
@@ -35,19 +51,6 @@ function BookingListScreen(navigation){
     return () => Hub.remove('auth', listener);
   }, []);
 
-
-  // checkUser().then(response =>{
-  //   console.log(response);
-  // });
-
-  if (user === undefined) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator/>
-      </View>
-    );
-  }
-
   if (user === null) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -56,8 +59,16 @@ function BookingListScreen(navigation){
     );
   }
 
+  if (user === undefined && bookingList === undefined) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator/>
+      </View>
+    );
+  }
+
   return (
-      <BookingList/>
+      <BookingList list={bookingList}/>
     );
 }
 

@@ -17,7 +17,7 @@ function Card(props){
             <View style={styles.container}>
                 <Image source={image} style={styles.image}/>
                 <Text style={styles.title}>{props.title}</Text>
-                <Text>Rating: {props.rating}</Text>
+                <Text>Rating: {props.rating} / 10</Text>
                 <Button onPress={pressedBook} title='Book Now'/>
            </View>
     );

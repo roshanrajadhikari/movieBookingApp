@@ -10,6 +10,12 @@
       "StackName": "amplify-moviebookingapp-dev-231154",
       "StackId": "arn:aws:cloudformation:us-east-1:609332332664:stack/amplify-moviebookingapp-dev-231154/90f073f0-f09a-11ec-b0e8-0a0d5c2710bf",
       "AmplifyAppId": "d2avmrukkjpap8"
+    },
+    "categories": {
+      "auth": {
+        "moviebookingappf3f188b4": {},
+        "movieBookingApp": {}
+      }
     }
   }
 }

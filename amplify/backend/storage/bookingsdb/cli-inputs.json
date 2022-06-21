@@ -1,0 +1,10 @@
+{
+  "resourceName": "bookingsdb",
+  "tableName": "bookingsdb",
+  "partitionKey": {
+    "fieldName": "bookingId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

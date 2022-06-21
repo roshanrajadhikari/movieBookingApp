@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import Booking from './Booking';
 
-const bookingList = [
+/**
+ const bookingList = [
     {   
         bookingId: "S2001",
         movie: "Movie Name",
@@ -48,12 +49,13 @@ const bookingList = [
         dateTime: "19/06/2022 18:00"
     },
 ];
+**/
 
-function BookingList(){
+function BookingList(props){
     return (
         <View style={styles.container}>
             <FlatList
-                data = {bookingList}
+                data = {props.list}
                 renderItem = {({item,index}) =>{
                     return <Booking movie={item.movie} seats={item.seats} dateTime={item.dateTime} bookingId={item.bookingId}/>;
                 }}>
