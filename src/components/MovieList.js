@@ -1,40 +1,45 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Button,
-  FlatList,
-  ActivityIndicator
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    Button,
+    FlatList,
+    ActivityIndicator
 } from 'react-native';
 import Card from './Card';
-import {API} from 'aws-amplify';
-import {useNavigation} from '@react-navigation/core';
+import { API } from 'aws-amplify';
+import { useNavigation } from '@react-navigation/core';
 /**
  API address: https://7354lbyq11.execute-api.us-east-1.amazonaws.com/dev
  **/
 
-function MovieList(){
+function MovieList({ route }) {
 
     const [movieList, setMovieList] = useState(null);
     const navigation = useNavigation();
 
+    const getMovies = () => {
+        API.get('moviesapi', '/movies/', {})
+            .then(res =>
+                setMovieList(res)
+            );
+    }
+   
     //calling api to fetch all the movies
     useEffect(() => {
-        API.get('moviesapi','/movies/',{})
-        .then(res =>
-            setMovieList(res)
-        );
-      }, []);
+        //console.log("here");
+        getMovies();
+    }, [route]);
 
-      //while waiting for api to send response we have a loading icon 
+    //while waiting for api to send response we have a loading icon 
     if (movieList === null) {
         return (
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <ActivityIndicator/>
-          </View>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator />
+            </View>
         );
     }
 
@@ -42,13 +47,13 @@ function MovieList(){
     return (
         <View style={styles.container}>
             <FlatList
-                data = {movieList}
-                renderItem = {({item,index}) =>{
+                data={movieList}
+                renderItem={({ item, index }) => {
                     return <Card movie={item} navigation={navigation} />;
                 }}>
             </FlatList>
         </View>
-        
+
     );
 }
 
@@ -57,7 +62,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         margin: 5,
-        padding: 2     
+        padding: 2
     },
 });
 

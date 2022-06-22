@@ -22,7 +22,7 @@ function Index(){
     return (
         <NavigationContainer independent={true}>
           <Tab.Navigator
-            initialRouteName={"TestScreen"}
+            initialRouteName={bookingListName}
             screenOptions={
               ({ route }) => ({
                 tabBarActiveTintColor : 'orange',

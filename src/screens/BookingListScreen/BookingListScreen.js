@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import BookingList from '../../components/BookingList';
 import { Auth, Hub, API } from 'aws-amplify';
+import CustomButton from '../../components/CustomButton/CustomButton';
 
-function BookingListScreen(navigation){
+function BookingListScreen(navigation) {
 
   const [user, setUser] = useState(undefined);
   const [bookingList, setBookingLists] = useState(undefined);
@@ -20,20 +21,26 @@ function BookingListScreen(navigation){
       return false;
     }
   };
-  
-  useEffect(() => {
-
+  const getBookings = () => {
     try {
-      API.get('moviesapi','/bookings?q=test2',{body:{user :"test"}})
-      .then(res => 
-        //console.log(res)
-        setBookingLists(res)
+      const path = "/bookings?q=" + user.attributes.preferred_username;
+      API.get('moviesapi', path, {})
+        .then(res =>
+          //console.log(res)
+          setBookingLists(res)
         );
+      console.log("here");
     } catch (error) {
       console.log(error)
     }
+  }
+  useEffect(() => {
+    //console.log(user.attributes.preferred_username);
+    if (user != undefined) {
+      getBookings();
+    }
 
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     checkUser();
@@ -54,23 +61,25 @@ function BookingListScreen(navigation){
   if (user === null) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{fontSize:15,fontWeight:'bold',color:'black',}}>Please sign in to see your bookings</Text>
+        <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black', }}>Please sign in to see your bookings</Text>
       </View>
     );
   }
 
-  if (user === undefined && bookingList === undefined) {
+  if (user === undefined || bookingList === undefined) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator/>
+        <ActivityIndicator />
       </View>
     );
   }
 
   return (
-      <BookingList list={bookingList}/>
-      
-    );
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <CustomButton text="Reload" onPress={getBookings} />
+      <BookingList list={bookingList} />
+    </View>
+  );
 }
 
 export default BookingListScreen;

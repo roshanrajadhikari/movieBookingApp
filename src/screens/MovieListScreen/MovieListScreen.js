@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 function MovieListScreen(){
     return (
         <NavigationContainer independent={true}>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{headerShown: false}}> 
         <Stack.Screen name="movieList" component={MovieList} />
         <Stack.Screen name="bookMovie" component={BookMovieScreen} />
         </Stack.Navigator>
