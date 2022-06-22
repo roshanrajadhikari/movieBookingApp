@@ -24,10 +24,10 @@ function BookingListScreen(navigation){
   useEffect(() => {
 
     try {
-      API.get('movieapi','/bookings/bookingId')
+      API.get('moviesapi','/bookings?q=test2',{body:{user :"test"}})
       .then(res => 
-        console.log(res)
-        //setBookingLists(res)
+        //console.log(res)
+        setBookingLists(res)
         );
     } catch (error) {
       console.log(error)
@@ -54,7 +54,7 @@ function BookingListScreen(navigation){
   if (user === null) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Please sign in </Text>
+        <Text style={{fontSize:15,fontWeight:'bold',color:'black',}}>Please sign in to see your bookings</Text>
       </View>
     );
   }
@@ -69,6 +69,7 @@ function BookingListScreen(navigation){
 
   return (
       <BookingList list={bookingList}/>
+      
     );
 }
 

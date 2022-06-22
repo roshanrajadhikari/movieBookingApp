@@ -19,6 +19,27 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string"
         }
     },
+    "function": {
+        "moviesFunction": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "bookingsFunction": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
+    "api": {
+        "moviesapi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
+    },
     "auth": {
         "movieBookingApp": {
             "IdentityPoolId": "string",

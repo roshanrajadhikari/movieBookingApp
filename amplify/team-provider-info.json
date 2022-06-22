@@ -15,6 +15,16 @@
       "auth": {
         "moviebookingappf3f188b4": {},
         "movieBookingApp": {}
+      },
+      "function": {
+        "moviesFunction": {
+          "deploymentBucketName": "amplify-moviebookingapp-dev-231154-deployment",
+          "s3Key": "amplify-builds/moviesFunction-445a7849557437735862-build.zip"
+        },
+        "bookingsFunction": {
+          "deploymentBucketName": "amplify-moviebookingapp-dev-231154-deployment",
+          "s3Key": "amplify-builds/bookingsFunction-783751526b466a46684a-build.zip"
+        }
       }
     }
   }

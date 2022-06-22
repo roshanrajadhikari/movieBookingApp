@@ -11,15 +11,22 @@ import {
 } from 'react-native';
 import Card from './Card';
 import {API} from 'aws-amplify';
+import {useNavigation} from '@react-navigation/core';
+/**
+ API address: https://7354lbyq11.execute-api.us-east-1.amazonaws.com/dev
+ **/
 
 function MovieList(){
 
     const [movieList, setMovieList] = useState(null);
+    const navigation = useNavigation();
 
     //calling api to fetch all the movies
     useEffect(() => {
-        API.get('moviesapi','/movies/movieId')
-        .then(res => setMovieList(res));
+        API.get('moviesapi','/movies/',{})
+        .then(res =>
+            setMovieList(res)
+        );
       }, []);
 
       //while waiting for api to send response we have a loading icon 
@@ -37,13 +44,14 @@ function MovieList(){
             <FlatList
                 data = {movieList}
                 renderItem = {({item,index}) =>{
-                    return <Card title={item.movieName} rating={item.movieRating} imageUrl={item.movieImage} movieId={item.movieId}/>;
+                    return <Card movie={item} navigation={navigation} />;
                 }}>
             </FlatList>
         </View>
         
     );
 }
+
 
 const styles = StyleSheet.create({
     container: {

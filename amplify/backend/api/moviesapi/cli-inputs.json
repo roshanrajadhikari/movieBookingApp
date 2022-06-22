@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/movies": {
+      "name": "/movies",
+      "lambdaFunction": "moviesFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/bookings": {
+      "name": "/bookings",
+      "lambdaFunction": "bookingsFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

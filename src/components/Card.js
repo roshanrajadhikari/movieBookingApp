@@ -12,21 +12,24 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 function Card(props){
-    const image = {uri : props.imageUrl};
+    const movie = props.movie;
+    const image = {uri : movie.movieImage};
+    const navigation = props.navigation;
     return (
             <View style={styles.container}>
                 <Image source={image} style={styles.image}/>
-                <Text style={styles.title}>{props.title}</Text>
-                <Text>Rating: {props.rating} / 10</Text>
-                <Button onPress={pressedBook} title='Book Now'/>
+                <Text style={styles.title}>{movie.movieName} </Text>
+                <Text>Rating: {movie.movieRating} / 10</Text>
+                <Button onPress={()=>onPressed(movie,props.navigation)} title='Book Now'/>
            </View>
     );
 }
 
-const pressedBook = (id) => {
-    alert("test");
-}
 
+const onPressed = (movie,navigation)=>{
+    navigation.navigate('bookMovie',{movie : movie});
+    //alert("test" + id);
+}
 //styles for card
 const styles = StyleSheet.create({
     container: {
