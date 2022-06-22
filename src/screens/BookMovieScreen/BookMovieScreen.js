@@ -135,9 +135,9 @@ const BookMovieScreen = ({ route, navigation }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={{ fontSize: 20, marginBottom: 10, }}>{movie.movieName}</Text>
-        <Text style={{ fontSize: 12, marginBottom: 5, }}>Capacity: {capacity}</Text>
-        <Text style={{ fontSize: 12, marginBottom: 5, }}>Available Seats: {availableSeats}</Text>
+        <Text style={{ fontSize: 20, marginBottom: 10, color:'black',}}>{movie.movieName}</Text>
+        <Text style={{ fontSize: 12, marginBottom: 5, color:'black',}}>Capacity: {capacity}</Text>
+        <Text style={{ fontSize: 12, marginBottom: 5, color:'black',}}>Available Seats: {availableSeats}</Text>
         <SelectList
           data={sessionData}
           setSelected={setSelected}
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     padding: 20,
+    color:'black',
   },
 
 });

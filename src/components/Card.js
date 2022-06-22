@@ -19,7 +19,7 @@ function Card(props){
             <View style={styles.container}>
                 <Image source={image} style={styles.image}/>
                 <Text style={styles.title}>{movie.movieName} </Text>
-                <Text>Rating: {movie.movieRating} / 10</Text>
+                <Text style={{color:'black',}}>Rating: {movie.movieRating} / 10</Text>
                 <Button onPress={()=>onPressed(movie,props.navigation)} title='Book Now'/>
            </View>
     );
