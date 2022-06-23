@@ -60,6 +60,10 @@ const BookMovieScreen = ({ route, navigation }) => {
     }
   }, [selected]);
 
+  const onBackPressed = () => {
+    navigation.navigate('movieList', { refresh: true });
+  }
+
   const onBookPressed = async data => {
 
     if (loading) {
@@ -86,31 +90,31 @@ const BookMovieScreen = ({ route, navigation }) => {
           dateTime: movie.movieSession[selected][SESSION.dateTime],
           movieName: movie.movieName,
           seats: seats,
-          user:user.attributes.preferred_username
+          user: user.attributes.preferred_username
         };
         /// data structre   [["20", "22/06/2022", "50"], ["10", "23/06/2022", "55"]]
 
         let updateSession = movie.movieSession;
-        updateSession.forEach((item,index)=>{item[0] = (parseInt(item[0]) + parseInt(seats)).toString()});
+        updateSession.forEach((item, index) => { item[0] = (parseInt(item[0]) + parseInt(seats)).toString() });
         const updatedMovie = {
           movieId: movie.movieId,
-          movieImage:movie.movieImage,
-          movieName:movie.movieName,
-          movieRating:movie.movieRating,
-          movieSession:updateSession,
+          movieImage: movie.movieImage,
+          movieName: movie.movieName,
+          movieRating: movie.movieRating,
+          movieSession: updateSession,
         };
         //console.log(updatedMovie);
         API.post('moviesapi', '/bookings/', { body: body })
           .then(res =>
             console.log(res)
-          ).finally(()=>{
-            API.put('moviesapi','/movies/',{body:updatedMovie})
-            .then(res => 
-              console.log(res)
-              //setBookingLists(res)
+          ).finally(() => {
+            API.put('moviesapi', '/movies/', { body: updatedMovie })
+              .then(res =>
+                console.log(res)
+                //setBookingLists(res)
               );
             alert("Booked, check your booking list");
-            navigation.navigate('movieList',{refresh: true});
+            navigation.navigate('movieList', { refresh: true });
           });
         //console.log(response.attributes);
       } catch (e) {
@@ -135,15 +139,17 @@ const BookMovieScreen = ({ route, navigation }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={{ fontSize: 20, marginBottom: 10, color:'black',}}>{movie.movieName}</Text>
-        <Text style={{ fontSize: 12, marginBottom: 5, color:'black',}}>Capacity: {capacity}</Text>
-        <Text style={{ fontSize: 12, marginBottom: 5, color:'black',}}>Available Seats: {availableSeats}</Text>
+        <Text style={{ fontSize: 20, marginBottom: 10, color: 'black', }}>{movie.movieName}</Text>
+        <Text style={{ fontSize: 12, marginBottom: 5, color: 'black', }}>Capacity: {capacity}</Text>
+        <Text style={{ fontSize: 12, marginBottom: 5, color: 'black', }}>Available Seats: {availableSeats}</Text>
         <SelectList
+          search={false}
           data={sessionData}
           setSelected={setSelected}
           boxStyles={{ backgroundColor: 'white', marginBottom: 10, }}
           dropdownStyles={{ backgroundColor: 'white', }}
           dropdownTextStyles={{ color: 'black', }}
+          inputStyles={{ color: 'black', }}
           placeholder="Select Movie Session"
         />
         <CustomInput
@@ -156,6 +162,11 @@ const BookMovieScreen = ({ route, navigation }) => {
           text={loading ? 'Booking...' : 'Book'}
           onPress={handleSubmit(onBookPressed)}
         />
+        <CustomButton
+          text='Go Back'
+          onPress={onBackPressed}
+          type="SECONDARY"
+        />
       </View>
     </ScrollView>
   );
@@ -165,7 +176,7 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     padding: 20,
-    color:'black',
+    color: 'black',
   },
 
 });

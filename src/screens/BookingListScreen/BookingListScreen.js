@@ -8,6 +8,7 @@ function BookingListScreen(navigation) {
 
   const [user, setUser] = useState(undefined);
   const [bookingList, setBookingLists] = useState(undefined);
+  const [reloading, setReloading] = useState(false);
 
   const checkUser = async () => {
     try {
@@ -21,6 +22,12 @@ function BookingListScreen(navigation) {
       return false;
     }
   };
+
+  const reload = () => {
+    setBookingLists(undefined);
+    getBookings();
+  }
+
   const getBookings = () => {
     try {
       const path = "/bookings?q=" + user.attributes.preferred_username;
@@ -75,8 +82,11 @@ function BookingListScreen(navigation) {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <CustomButton text="Reload" onPress={getBookings} />
+    <View style={{
+      flex: 1, justifyContent: 'center', alignItems: 'center',
+      padding: 20,
+    }}>
+      <CustomButton text="Reload" onPress={reload} type="SECONDARY" />
       <BookingList list={bookingList} />
     </View>
   );

@@ -14,10 +14,10 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 function Booking(props){
     return (
             <View style={styles.container}>
-                <Text>Booking ID: {props.bookingId}</Text>
-                <Text>Movie: {props.movie}</Text>
-                <Text>Seats: {props.seats}</Text>
-                <Text>Date/Time: {props.dateTime}</Text>
+                <Text style={styles.text}>Booking ID: {props.bookingId}</Text>
+                <Text style={styles.text}>Movie: {props.movie}</Text>
+                <Text style={styles.text}>Seats: {props.seats}</Text>
+                <Text style={styles.text}>Date/Time: {props.dateTime}</Text>
            </View>
     );
 }
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
         shadowColor: '#00000f',
         marginBottom:25,
     },
+    text:{
+        color:'black',
+    }
 
 });
 

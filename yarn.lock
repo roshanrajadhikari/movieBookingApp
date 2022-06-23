@@ -8687,10 +8687,10 @@
     "jscodeshift" "^0.13.1"
     "nullthrows" "^1.1.1"
 
-"react-native-dropdown-select-list@^1.0.8":
-  "integrity" "sha512-xGUaGnaYL8PYg51cNdiFcKVV9ik/wgiJ6nf1S1eeDf8p9Tp7VstCYlFHFSkZ01P8Tb3KJpLFSRoM5Ck3Cdgkig=="
-  "resolved" "https://registry.npmjs.org/react-native-dropdown-select-list/-/react-native-dropdown-select-list-1.0.8.tgz"
-  "version" "1.0.8"
+"react-native-dropdown-select-list@^1.0.10":
+  "integrity" "sha512-EAH/e5fr4bLa2cmyyyuo7Y3qdA7M7hISo9P2Ccg6t2+suIFLpb7QpPXeX/lHtOwAOq+uMRqFrFaVn17sGC/FrA=="
+  "resolved" "https://registry.npmjs.org/react-native-dropdown-select-list/-/react-native-dropdown-select-list-1.0.10.tgz"
+  "version" "1.0.10"
 
 "react-native-get-random-values@^1.4.0", "react-native-get-random-values@^1.8.0":
   "integrity" "sha512-H/zghhun0T+UIJLmig3+ZuBCvF66rdbiWUfRSNS6kv5oDSpa1ZiVyvRWtuPesQpT8dXj+Bv7WJRQOUP+5TB1sA=="
